@@ -1,0 +1,90 @@
+.body {
+    margin: 0;
+    background-color: #5db2e0;
+}
+
+.logo-container {
+    text-align: center;
+}
+
+.logo-container img {
+    width: 400px; /* Ajustez la largeur de votre logo selon vos besoins */
+    height: 300px; /* Ajustez la hauteur de votre logo selon vos besoins */
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.text-center button {
+    width: 200px; /* Ajustez la largeur comme nécessaire */
+    margin-bottom: 10px; /* Espacement entre les boutons */
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;  
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: #e0e0e0;
+
+
+}
+
+form {
+    width: 400px;
+}
+
+.auth-table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.auth-table td {
+    padding: 8px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-center button {
+    width: 200px; /* Adjust the width as needed */
+}
+
+.input-table {
+    margin: 0 auto; /* Centrer le tableau des inputs horizontalement */
+}
+.p-float-label input {
+    width: 300px; /* Ou une valeur spécifique en pixels ou pourcentage */
+}
+
+.label-bold {
+    text-align: right; /* Aligner le texte à droite */
+    font-weight: bold;
+    margin-right:50px; /* Ajouter une marge à droite pour l'espace entre le label et l'input */
+}
+
+.custom-h5 {
+    font-style: italic; /* Changer le style du texte h5 */
+}
+
+.forgot-password {
+    text-align: right; /* Centrer la phrase "Mot de passe oublié ?" */
+}

@@ -1,0 +1,26 @@
+import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'primeng/api';
+
+@Component({
+  selector: 'app-garantie',
+  templateUrl: './garantie.component.html',
+  styleUrls: ['./garantie.component.css']
+})
+export class GarantieComponent implements OnInit {
+
+  constructor(private messageService: MessageService) { }
+
+
+  ngOnInit(): void {
+
+  }
+
+  garanties = [
+    { nature: 'TEST', type: 'test', valeur: 'TEST', devise: 'TEST' }
+  ];
+
+  ajouterElement() {
+    this.garanties.push({ nature: '', type: '', valeur: '', devise: '' });
+  }
+
+}

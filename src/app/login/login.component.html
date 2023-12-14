@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="form-container">
+        <form>
+            <div class="logo-container">
+                <img src="../assets/images/Image1.png" alt="Logo" />
+            </div>
+            <h1>Authentification</h1>
+            <h5 class="custom-h5">Bienvenue sur E-Crédit</h5>
+
+            <table class="input-table">
+                <tr>
+                    <span class="p-float-label">
+                        <input pInputText id="Login"  />
+                        <label for="Login">Login</label>
+                    </span>
+                </tr>
+                <br>
+                <tr>
+                    <span class="p-float-label">
+                        <input pInputText id="MotDePasse" type="password" />
+                        <label for="MotDePasse">Mot de passe</label>
+                    </span>
+                    
+                </tr>
+            </table>
+            <p class="forgot-password">Mot de passe oublié ?</p>
+
+            <br>
+            <br>
+
+            <div class="button-container">
+                <div class="text-center">
+                    <button (click)="onConnexion()" pripple="" class="p-ripple p-element p-button p-component p-button-warning p-button-raised p-button-text" type="button" data-pc-name="button" data-pc-section="root">
+                        <span class="p-button-label ng-star-inserted" data-pc-section="label">Connexion</span>
+                    </button>
+                </div>
+                
+                <div class="text-center">
+                    <button pripple="" class="p-ripple p-element p-button p-component p-button-secondary p-button-raised p-button-text" type="button" data-pc-name="button" data-pc-section="root">
+                        <span class="p-button-label ng-star-inserted" data-pc-section="label">Annuler</span>
+                    </button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

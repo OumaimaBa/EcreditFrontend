@@ -1,0 +1,10 @@
+<!-- app.component.html -->
+<ng-container *ngIf="isLoggedIn">
+    <app-sidenav (onToggleSideNav)="onToggleSideNav($event)"></app-sidenav>
+</ng-container>
+<ng-container *ngIf="isLoggedIn">
+    <app-body [collapsed]="isSideNavCollapsed" [screenWidth]="screenWidth"></app-body>
+</ng-container>
+<ng-container *ngIf="!isLoggedIn">
+    <app-login></app-login>
+</ng-container>  

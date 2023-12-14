@@ -1,0 +1,41 @@
+<p-fieldset legend="Pièces jointes" [toggleable]="true">
+    <div>
+      <table style="width: 100%;">
+        <tr>
+          <td>
+            <p-table
+              #dt
+              [rows]="10"
+              [paginator]="true"
+              [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']"
+              [tableStyle]="{ 'min-width': '75rem' }"
+              [rowHover]="true"
+              dataKey="id"
+              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+              [showCurrentPageReport]="true"
+            >
+              <ng-template pTemplate="header">
+                <tr>
+                  <th style="text-align: center;">Documents</th>
+                  <th style="text-align: center;">Obligatoire</th>
+                  <th style="text-align: center;">Status</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body">
+                <!-- Première ligne statique -->
+                <tr>
+                  <td>TEST</td>
+                  <td>test</td>
+                  <td>TEST</td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </td>
+          <td style="margin-left: 50px;">
+            <button pButton pRipple icon="pi pi-plus" class="p-button-rounded p-button-info"></button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </p-fieldset>
+  
