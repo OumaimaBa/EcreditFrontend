@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PjDemandes } from '../models/PjDemandes';
+import { PjDemandesService } from 'src/services/pj-demandes.service';
 
 @Component({
   selector: 'app-pieces-j',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PiecesJComponent implements OnInit {
 
-  constructor() { }
+  piecesJsDemandes: PjDemandes[] = [];
+  value: boolean = false;
+
+  constructor(private piecesJsDemandesService: PjDemandesService) {}
 
   ngOnInit(): void {
+    this.loadPiecesJsDemandes(1); 
   }
 
+  loadPiecesJsDemandes(typeC: number): void {
+    this.piecesJsDemandesService
+      .getAllPiecesJsDemandes(typeC)
+      .subscribe((data) => (this.piecesJsDemandes = data));
+  }
+
+  convertToBoolean(value: number): boolean {
+    return value === 1;
+  }
 }

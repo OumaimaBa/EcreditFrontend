@@ -8,7 +8,7 @@
               [rows]="10"
               [paginator]="true"
               [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']"
-              [tableStyle]="{ 'min-width': '75rem' }"
+              [tableStyle]="{ 'min-width': '100%' }"
               [rowHover]="true"
               dataKey="id"
               currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
@@ -20,14 +20,19 @@
                   <th style="text-align: center;">Obligatoire</th>
                   <th style="text-align: center;">Status</th>
                 </tr>
-              </ng-template>
-              <ng-template pTemplate="body">
+              
+              
                 <!-- Première ligne statique -->
-                <tr>
-                  <td>TEST</td>
-                  <td>test</td>
-                  <td>TEST</td>
-                </tr>
+                <!-- pieces-j.component.html -->
+
+              <tr *ngFor="let pj of piecesJsDemandes">
+                <td class="text-center">{{ pj.document }}</td>
+                <td class="text-center">{{ pj.obg === 1 ? 'Oui' : 'Non' }}</td>
+                <td class="text-center">
+                  <p-checkbox [ngModel]="convertToBoolean(pj.statut)" (ngModelChange)="pj.statut = $event" [binary]="true"></p-checkbox>
+                </td>
+              </tr>
+
               </ng-template>
             </p-table>
           </td>

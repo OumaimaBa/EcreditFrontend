@@ -6,7 +6,7 @@
                     <label>Type crédit :</label>
                 </td>
                 <td colspan="6">
-                    <p-dropdown placeholder="Choisir :"></p-dropdown>
+                    <p-dropdown placeholder="Choisir :" [options]="typesC" optionLabel="libTC"></p-dropdown>
                 </td>
                 <td>
                     <label>Montant :</label>
@@ -21,7 +21,7 @@
                     <label>Unité :</label>
                 </td>
                 <td colspan="6">
-                    <p-dropdown placeholder="Choisir :"></p-dropdown>
+                    <p-dropdown placeholder="Choisir :"   [options]="unites"    ></p-dropdown>
                 </td>
                 <td>
                     <label>Nbre échéance :</label>

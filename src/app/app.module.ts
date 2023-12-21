@@ -32,6 +32,11 @@ import { SidebarModule } from 'primeng/sidebar';
 import { BodyComponent } from './body/body.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { DialogModule } from 'primeng/dialog';
+import { DialogService } from 'primeng/dynamicdialog';
+import {CheckboxModule} from 'primeng/checkbox';
+
 
 @NgModule({
   declarations: [
@@ -49,10 +54,12 @@ import { HttpClientModule } from '@angular/common/http';
     SidenavComponent,
     ],
   imports: [
+    CheckboxModule,
     HttpClientModule ,
     SidebarModule,
     InputTextareaModule,
     FileUploadModule,
+    DialogModule,
     TagModule,
     RatingModule,
     ToastModule,
@@ -67,9 +74,12 @@ import { HttpClientModule } from '@angular/common/http';
     ButtonModule,
     InputTextModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+
   ],
-  providers: [MessageService],
+  providers: [MessageService,  DialogService  ],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }

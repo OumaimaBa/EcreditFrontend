@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {TypeC} from '../models/TypeC';
+import {TypeCService} from '../../services/dossier-credit.service';
+
 
 @Component({
   selector: 'app-dossier-credit',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DossierCreditComponent implements OnInit {
 
-  constructor() { }
+  typesC: TypeC[] = [];
+  unites: string[] = ['mensuelle','trimesterielle','annuelle'];
+
+  constructor(private tcService: TypeCService) { }
 
   ngOnInit(): void {
+    this.tcService.getAllTypesC().subscribe(data => {
+      this.typesC = data;
+    });
   }
 
 }

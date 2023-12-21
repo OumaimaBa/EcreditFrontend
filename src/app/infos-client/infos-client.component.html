@@ -1,58 +1,60 @@
 <p-fieldset legend="Informations client" [toggleable]="true">
-    <div>
-        <table style="width: 100%;">
-            <tr>
-                <td colspan="6">
-                    <label>N° CIN :</label>
-                </td>
-                <td colspan="6">
-                    <input type="text" placeholder="CIN" pinputtext class="p-inputtext p-component p-element" (input)="onCinInputChange($event)">
-                </td>
-                <td>
-                    <label>Nom :</label>
-                </td>
-                <td >
-                    <input type="text" pInputText class="p-inputtext p-component p-element p-filled ng-untouched ng-pristine" [value]="nom" disabled>
-                </td>
-                <td>
-                    <label>Prénom :</label>
-                </td>
-                <td colspan="3" >
-                    <input type="text" pInputText class="p-inputtext p-component p-element p-filled ng-untouched ng-pristine" [value]="prenom" disabled>
-                </td>
-            </tr>
-            <br>
-            <tr>
-                <td colspan="6">
-                    <label>N° du compte :</label>
-                </td>
-                <td colspan="6">
-                    <p-dropdown  placeholder="Choisir :"></p-dropdown>
-                    <input [disabled]="true" type="text" class="short-input"  >
-                </td>
-                <td>
-                    <label>Date d'ouverture compte :</label>
-                </td>
-                <td colspan="3">
-                    <p-calendar [disabled]="true" dateFormat="dd/mm/yy" [showIcon]="true"></p-calendar>
-                </td>
-            
-            </tr>
-            <br>
-            <tr>
-                <td colspan="6">
-                    <label>Date de naissance :</label>
-                </td>
-                <td colspan="6">
-                    <p-calendar [disabled]="true" dateFormat="dd/mm/yy" [showIcon]="true"></p-calendar>
-                </td>
-                <td >
-                    <label>Situation familiale :</label>
-                </td>
-                <td colspan="3">
-                    <input type="text" pinputtext class="p-inputtext p-component p-element p-filled ng-untouched ng-pristine" disabled>                
-                </td>
-            </tr>
-        </table>
-    </div>
+  <div>
+    <table style="width: 100%;">
+      <tr>
+        <td colspan="6">
+          <label>N° CIN :</label>
+        </td>
+        <td colspan="6">
+          <input type="text" placeholder="CIN" pInputText class="p-inputtext p-component p-element" (input)="onCinInputChange($event)">
+        </td>
+        <td>
+          <label>Nom :</label>
+        </td>
+        <td>
+          <input type="text" pInputText class="p-inputtext p-component p-element p-filled ng-untouched ng-pristine" [(ngModel)]="proprietaire.nom" disabled>
+        </td>
+        <td>
+          <label>Prénom :</label>
+        </td>
+        <td colspan="3">
+          <input type="text" pInputText class="p-inputtext p-component p-element p-filled ng-untouched ng-pristine" [(ngModel)]="proprietaire.prenom" disabled>
+        </td>
+      </tr>
+      <br>
+
+      <tr>
+        <td colspan="6">
+          <label>N° du compte :</label>
+        </td>
+        <td colspan="6">
+            <p-dropdown placeholder="Choisir :" [options]="proprietaire.comptes || []" optionLabel="numCompte" [(ngModel)]="selectedNumeroCompte" (onChange)="onNumeroCompteChange()"></p-dropdown>
+            <input [disabled]="true" type="text" class="short-input" [(ngModel)]="devise">
+        </td>
+        <td>
+          <label>Date d'ouverture compte :</label>
+        </td>
+        <td colspan="3">
+          <p-calendar [disabled]="true" dateFormat="dd/mm/yy" [showIcon]="true" [(ngModel)]="parseddateOuv"></p-calendar>
+        </td>
+      </tr>
+      <br>
+
+      <tr>
+        <td colspan="6">
+          <label>Date de naissance :</label>
+        </td>
+        <td colspan="6">
+          <p-calendar  dateFormat="dd/mm/yy" [disabled]="true" [showIcon]="true" [(ngModel)]="parsedDateNaiss"></p-calendar>
+     
+        </td>
+        <td>
+          <label>Situation familiale :</label>
+        </td>
+        <td colspan="3">
+          <input type="text" pInputText class="p-inputtext p-component p-element p-filled ng-untouched ng-pristine" [(ngModel)]="proprietaire.sf" disabled>
+        </td>
+      </tr>
+    </table>
+  </div>
 </p-fieldset>

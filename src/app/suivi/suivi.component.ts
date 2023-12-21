@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./suivi.component.css']
 })
 export class SuiviComponent implements OnInit {
-
-  constructor() { }
+  dateSysteme: Date = new Date();
 
   ngOnInit(): void {
+    this.dateSysteme = new Date();
   }
+  constructor() { }
 
 }

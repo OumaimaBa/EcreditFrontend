@@ -12,4 +12,12 @@ export class DemandeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  enregistrerDemande(){
+
+  }
+
+  reinitialiser(){
+    
+  }
+
 }

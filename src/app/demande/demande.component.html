@@ -22,9 +22,10 @@
     <app-observation></app-observation>
 </div>
 <br>
-<div style="text-align: center;">
-    <button pripple="" class="p-ripple p-element p-button p-component p-button-secondary p-button-outlined" type="button" data-pc-name="button" data-pc-section="root" style="margin-right: 20px; width:150px;"><!----><!----><!----><!----><!----><!----><span class="p-button-label ng-star-inserted" data-pc-section="label">Initialiser</span><!----><!----><span class="p-ink" aria-hidden="true" role="presentation" style="height: 113px; width: 113px; top: -47.6523px; left: 32.9375px;"></span></button>
-    <button pripple="" class="p-ripple p-element p-button p-component p-button-success p-button-outlined" type="button" data-pc-name="button" data-pc-section="root" style=" width:150px;"><!----><!----><!----><!----><!----><!----><span class="p-button-label ng-star-inserted" data-pc-section="label">Enregistrer</span><!----><!----><span class="p-ink" aria-hidden="true" role="presentation" style="height: 96px; width: 96px; top: -28.1523px; left: -31.0586px;"></span></button>
+<div style="text-align: center; margin-top: 20px;">
+    <button pButton type="button" icon="pi pi-plus" label="Enregistrer" class="p-button-info custom-button" (click)="enregistrerDemande()"></button>
+    <span style="margin: 0 10px;"></span> <!-- Ajoutez un espace horizontal entre les boutons -->
+    <button pButton type="onSubmit" icon="pi pi-refresh" label="Réinitialiser" class="p-button-warning custom-button" (click)="reinitialiser()"></button>
 </div>
 <br>
 

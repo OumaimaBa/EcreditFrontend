@@ -1,5 +1,5 @@
 .sidenav {
-    background: #e0e0e0;
+    background: #1F4E69;
     transition: all .5s ease;
     position: fixed;
     z-index: 1;
@@ -32,7 +32,7 @@
     .logo-text{
         margin-left:1.5rem;
         font-size:22px;
-        font-weight:700;
+        font-weight:900;
         color:#fff;
     }
 
