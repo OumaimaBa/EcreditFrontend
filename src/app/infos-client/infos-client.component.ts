@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProprietaireComptesService } from '../../services/proprietaire-comptes.service';
 import { Proprietaire, Compte } from '../models/Proprietaire-Compte';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-infos-client',
@@ -12,6 +13,8 @@ export class InfosClientComponent implements OnInit {
   proprietaire: Proprietaire = {};
   selectedCompte: Compte = {};
   parsedDateNaiss: Date | undefined;
+  cinControl = new FormControl('', [Validators.required, Validators.pattern(/^\d{8}$/)]);
+
 
   constructor(private proprietaireService: ProprietaireComptesService) { }
 

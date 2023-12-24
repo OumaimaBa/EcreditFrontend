@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MessageService } from 'primeng/api';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,7 +33,6 @@ import { SidebarModule } from 'primeng/sidebar';
 import { BodyComponent } from './body/body.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { DialogService } from 'primeng/dynamicdialog';
 import {CheckboxModule} from 'primeng/checkbox';
@@ -76,7 +76,7 @@ import {CheckboxModule} from 'primeng/checkbox';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-
+    ReactiveFormsModule
   ],
   providers: [MessageService,  DialogService  ],
   bootstrap: [AppComponent]

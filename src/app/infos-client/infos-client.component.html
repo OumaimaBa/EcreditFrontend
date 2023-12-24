@@ -6,7 +6,13 @@
           <label>N° CIN :</label>
         </td>
         <td colspan="6">
-          <input type="text" placeholder="CIN" pInputText class="p-inputtext p-component p-element" (input)="onCinInputChange($event)">
+          <input type="text" placeholder="CIN" pInputText class="p-inputtext p-component p-element"
+          [formControl]="cinControl">
+   
+          <!-- Affichez un message d'erreur si la validation échoue -->
+          <div *ngIf="cinControl.hasError('pattern')">
+            Le N° CIN doit être composé de 8 chiffres.
+          </div>        
         </td>
         <td>
           <label>Nom :</label>

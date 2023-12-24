@@ -10,17 +10,18 @@
             <table class="input-table">
                 <tr>
                     <span class="p-float-label">
-                        <input pInputText id="Login"  />
+                        <!-- Utilisez [(ngModel)] pour lier le champ à la propriété login -->
+                        <input pInputText id="Login" [(ngModel)]="login" />
                         <label for="Login">Login</label>
                     </span>
                 </tr>
                 <br>
                 <tr>
                     <span class="p-float-label">
-                        <input pInputText id="MotDePasse" type="password" />
+                        <!-- Utilisez [(ngModel)] pour lier le champ à la propriété password -->
+                        <input pInputText id="MotDePasse" type="password" [(ngModel)]="password" />
                         <label for="MotDePasse">Mot de passe</label>
                     </span>
-                    
                 </tr>
             </table>
             <p class="forgot-password">Mot de passe oublié ?</p>

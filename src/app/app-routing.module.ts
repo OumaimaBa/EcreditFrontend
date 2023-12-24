@@ -21,6 +21,8 @@ const routes: Routes = [
   {path:'observation' , component: ObservationComponent },
   {path:'demande' , component: DemandeComponent },
   {path:'credits' , component: CredisComponent },
+  { path: 'logout', component:  LoginComponent},
+
 
 ];
 
