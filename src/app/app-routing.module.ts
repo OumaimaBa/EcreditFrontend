@@ -9,6 +9,7 @@ import { PiecesJComponent } from './pieces-j/pieces-j.component';
 import { ObservationComponent } from './observation/observation.component';
 import { DemandeComponent } from './demande/demande.component';
 import { CredisComponent } from './credits/credis.component';
+import { DemandeConsultComponent } from './demande-consult/demande-consult.component';
 
 const routes: Routes = [
   {path : '', redirectTo:'login', pathMatch : 'full'},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path:'demande' , component: DemandeComponent },
   {path:'credits' , component: CredisComponent },
   { path: 'logout', component:  LoginComponent},
+  { path: 'details-demande/:id', component:  DemandeConsultComponent},
 
 
 ];

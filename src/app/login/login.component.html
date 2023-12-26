@@ -10,25 +10,21 @@
             <table class="input-table">
                 <tr>
                     <span class="p-float-label">
-                        <!-- Utilisez [(ngModel)] pour lier le champ à la propriété login -->
-                        <input pInputText id="Login" [(ngModel)]="login" />
+                        <input pInputText id="Login" name="login"[(ngModel)]="login" />
                         <label for="Login">Login</label>
                     </span>
                 </tr>
                 <br>
                 <tr>
                     <span class="p-float-label">
-                        <!-- Utilisez [(ngModel)] pour lier le champ à la propriété password -->
-                        <input pInputText id="MotDePasse" type="password" [(ngModel)]="password" />
+                        <input pInputText id="MotDePasse" type="password" name="mdp" [(ngModel)]="mdp" />
                         <label for="MotDePasse">Mot de passe</label>
                     </span>
                 </tr>
             </table>
             <p class="forgot-password">Mot de passe oublié ?</p>
-
             <br>
             <br>
-
             <div class="button-container">
                 <div class="text-center">
                     <button (click)="onConnexion()" pripple="" class="p-ripple p-element p-button p-component p-button-warning p-button-raised p-button-text" type="button" data-pc-name="button" data-pc-section="root">

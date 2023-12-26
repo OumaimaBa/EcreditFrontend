@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ObservationComponent implements OnInit {
 
+  observation!: string;
   constructor() { }
 
   ngOnInit(): void {

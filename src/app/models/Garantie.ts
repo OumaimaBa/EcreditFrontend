@@ -5,3 +5,9 @@ export interface Garantie {
     natureG: string
   }
   
+  export interface Garantiee {
+	valeur: string,
+	devise: string,
+	demande: number,
+    natureG: string
+  }

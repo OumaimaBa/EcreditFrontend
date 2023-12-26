@@ -6,13 +6,13 @@
                     <label>Type crédit :</label>
                 </td>
                 <td colspan="6">
-                    <p-dropdown placeholder="Choisir :" [options]="typesC" optionLabel="libTC"></p-dropdown>
+                    <p-dropdown class="custom-dropdown" placeholder="Choisir :" [options]="typesC" optionLabel="libTC" [(ngModel)]="typeC" (onChange)="onTypeCChange($event)"></p-dropdown>
                 </td>
                 <td>
                     <label>Montant :</label>
                 </td>
                 <td >
-                    <input type="text" pinputtext class="p-inputtext p-component p-element p-filled ng-untouched ng-pristine" >                
+                    <input type="number" [(ngModel)]="montant" pinputtext class="p-inputtext p-component p-element p-filled ng-untouched ng-pristine" >                
                 </td>
             </tr>
             <br>
@@ -21,13 +21,13 @@
                     <label>Unité :</label>
                 </td>
                 <td colspan="6">
-                    <p-dropdown placeholder="Choisir :"   [options]="unites"    ></p-dropdown>
+                    <p-dropdown placeholder="Choisir :"   [options]="unites" [(ngModel)]="unite"></p-dropdown>
                 </td>
                 <td>
                     <label>Nbre échéance :</label>
                 </td>
                 <td >
-                    <input type="text" pinputtext class="p-inputtext p-component p-element p-filled ng-untouched ng-pristine" disabled>                
+                    <input type="number" [(ngModel)]="nbE" pinputtext class="p-inputtext p-component p-element p-filled ng-untouched ng-pristine" >                
                 </td>
             
             </tr>

@@ -37,8 +37,11 @@
             </p-table>
           </td>
           <td style="margin-left: 50px;">
-            <button pButton pRipple icon="pi pi-plus" class="p-button-rounded p-button-info"></button>
-          </td>
+            <input type="file" (change)="onFileSelected($event)" multiple />
+            <button pButton pRipple icon="pi pi-plus" class="p-button-rounded p-button-info" (click)="uploadFiles()"></button>
+        </td>
+        
+          
         </tr>
       </table>
     </div>

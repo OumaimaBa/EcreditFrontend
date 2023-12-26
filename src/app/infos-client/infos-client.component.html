@@ -6,25 +6,25 @@
           <label>N° CIN :</label>
         </td>
         <td colspan="6">
-          <input type="text" placeholder="CIN" pInputText class="p-inputtext p-component p-element"
-          [formControl]="cinControl">
-   
-          <!-- Affichez un message d'erreur si la validation échoue -->
-          <div *ngIf="cinControl.hasError('pattern')">
-            Le N° CIN doit être composé de 8 chiffres.
-          </div>        
+          <input type="number" placeholder="CIN" name="cin" pInputText class="p-inputtext p-component p-element" [formControl]="cinControl" (input)="onCinInputChange($event)">
+          <div *ngIf="cinControl.invalid && (cinControl.dirty || cinControl.touched)" class="error-message">
+            <small *ngIf="cinControl.errors?.required">Le champ CIN est obligatoire.</small>
+            <small *ngIf="cinControl.errors?.pattern">Le champ CIN doit contenir exactement 8 chiffres.</small>
+          </div>
         </td>
+
+        
         <td>
           <label>Nom :</label>
         </td>
         <td>
-          <input type="text" pInputText class="p-inputtext p-component p-element p-filled ng-untouched ng-pristine" [(ngModel)]="proprietaire.nom" disabled>
+          <input type="text" pInputText class="p-inputtext p-component p-element p-filled ng-untouched ng-pristine" [(ngModel)]="proprietaire.nom" name="nom" disabled>
         </td>
         <td>
           <label>Prénom :</label>
         </td>
         <td colspan="3">
-          <input type="text" pInputText class="p-inputtext p-component p-element p-filled ng-untouched ng-pristine" [(ngModel)]="proprietaire.prenom" disabled>
+          <input type="text" pInputText class="p-inputtext p-component p-element p-filled ng-untouched ng-pristine" name="prenom" [(ngModel)]="proprietaire.prenom" disabled>
         </td>
       </tr>
       <br>
@@ -32,11 +32,12 @@
       <tr>
         <td colspan="6">
           <label>N° du compte :</label>
-        </td>
-        <td colspan="6">
-            <p-dropdown placeholder="Choisir :" [options]="proprietaire.comptes || []" optionLabel="numCompte" [(ngModel)]="selectedNumeroCompte" (onChange)="onNumeroCompteChange()"></p-dropdown>
-            <input [disabled]="true" type="text" class="short-input" [(ngModel)]="devise">
-        </td>
+      </td>
+      <td colspan="6">
+          <p-dropdown placeholder="Choisir :" [options]="proprietaire.comptes || []" optionLabel="numCompte" [(ngModel)]="selectedNumeroCompte" (onChange)="onNumeroCompteChange()"></p-dropdown>
+          <input [disabled]="true" type="text" class="short-input" [(ngModel)]="devise">
+      </td>
+      
         <td>
           <label>Date d'ouverture compte :</label>
         </td>
@@ -58,7 +59,7 @@
           <label>Situation familiale :</label>
         </td>
         <td colspan="3">
-          <input type="text" pInputText class="p-inputtext p-component p-element p-filled ng-untouched ng-pristine" [(ngModel)]="proprietaire.sf" disabled>
+          <input name="nom" type="text" pInputText class="p-inputtext p-component p-element p-filled ng-untouched ng-pristine" [(ngModel)]="proprietaire.sf" disabled>
         </td>
       </tr>
     </table>

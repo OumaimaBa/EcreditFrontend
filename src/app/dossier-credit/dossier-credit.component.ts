@@ -9,7 +9,13 @@ import {TypeCService} from '../../services/dossier-credit.service';
   styleUrls: ['./dossier-credit.component.css']
 })
 export class DossierCreditComponent implements OnInit {
+  montant!:number;
+  unite!:string;
+  nbE!:number;
+  typeC!:TypeC;
+  typeCid!:number;
 
+  
   typesC: TypeC[] = [];
   unites: string[] = ['mensuelle','trimesterielle','annuelle'];
 
@@ -20,5 +26,9 @@ export class DossierCreditComponent implements OnInit {
       this.typesC = data;
     });
   }
+
+  onTypeCChange(event: any): void {
+    this.typeCid = this.typeC.idTC; 
+}
 
 }

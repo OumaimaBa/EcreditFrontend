@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PjDemandes } from '../models/PjDemandes';
 import { PjDemandesService } from 'src/services/pj-demandes.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { PieceJs } from '../models/Demande';
 
 @Component({
   selector: 'app-pieces-j',
@@ -10,12 +12,47 @@ import { PjDemandesService } from 'src/services/pj-demandes.service';
 export class PiecesJComponent implements OnInit {
 
   piecesJsDemandes: PjDemandes[] = [];
-  value: boolean = false;
+  selectedFiles: File[] = [];
 
-  constructor(private piecesJsDemandesService: PjDemandesService) {}
+  constructor(private http: HttpClient, private piecesJsDemandesService: PjDemandesService) {}
+
+  onFileSelected(event: any): void {
+    // Note: event.target.files is a FileList
+    this.selectedFiles = event.target.files;
+  }
+
+  uploadFiles(): void {
+    if (this.selectedFiles && this.selectedFiles.length > 0) {
+      for (let i = 0; i < this.selectedFiles.length; i++) {
+        const file = this.selectedFiles[i];
+        // Provide your idDemande here
+        this.onFileUpload(file, 23);
+      }
+    } else {
+      console.warn('No files selected.');
+    }
+  }
+
+  onFileUpload(file: File, idDemande: number): void {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    formData.append('id_demande', idDemande.toString());
+
+    const headers = new HttpHeaders();
+
+    this.http.post<PieceJs>('http://localhost:8089/pj/add', formData, { headers })
+      .subscribe({
+        next: data => {
+          console.log('Réponse de l\'API :', data);
+        },
+        error: error => {
+          console.error('Erreur lors de l\'envoi du fichier :', error);
+        }
+      });
+  }
 
   ngOnInit(): void {
-    this.loadPiecesJsDemandes(1); 
+    this.loadPiecesJsDemandes(1);
   }
 
   loadPiecesJsDemandes(typeC: number): void {

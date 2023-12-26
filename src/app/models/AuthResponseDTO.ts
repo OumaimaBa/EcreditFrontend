@@ -1,3 +1,3 @@
 export interface AuthResponseDTO {
-  token: string;
+  accessToken: string;
 }

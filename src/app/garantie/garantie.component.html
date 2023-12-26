@@ -45,6 +45,7 @@
 
 <p-dialog header="Ajouter garantie" [(visible)]="visible" [style]="{ 'width': '62%' }">
 <div>
+    <p-toast></p-toast>
     <table>
         <tr>
             <td >
@@ -67,7 +68,7 @@
                 <label>Valeur :</label>
             </td>
             <td colspan="4">
-                <input type="text" [(ngModel)]="selectedValeur" pInputText class="p-inputtext p-component p-element p-filled ng-untouched ng-pristine custom-input" [style]="{ minWidth: '100px', width: '200%' }">
+                <input type="number" [(ngModel)]="selectedValeur" pInputText class="p-inputtext p-component p-element p-filled ng-untouched ng-pristine custom-input" [style]="{ minWidth: '100px', width: '200%' }">
             </td>
             <td style="width: 400px;"></td> 
             <td >

@@ -36,7 +36,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { DialogModule } from 'primeng/dialog';
 import { DialogService } from 'primeng/dynamicdialog';
 import {CheckboxModule} from 'primeng/checkbox';
-
+import { DatePipe } from '@angular/common';
+import { DemandeConsultComponent } from './demande-consult/demande-consult.component';
+import { HistoriqueComponent } from './historique/historique.component';
+import {ConfirmPopupModule} from 'primeng/confirmpopup';
+import {ConfirmationService} from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -52,8 +56,11 @@ import {CheckboxModule} from 'primeng/checkbox';
     CredisComponent,
     BodyComponent,
     SidenavComponent,
+    DemandeConsultComponent,
+    HistoriqueComponent,
     ],
   imports: [
+    ConfirmPopupModule,
     CheckboxModule,
     HttpClientModule ,
     SidebarModule,
@@ -78,7 +85,7 @@ import {CheckboxModule} from 'primeng/checkbox';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [MessageService,  DialogService  ],
+  providers: [MessageService, DatePipe, DialogService ,    ConfirmationService],
   bootstrap: [AppComponent]
 
 })

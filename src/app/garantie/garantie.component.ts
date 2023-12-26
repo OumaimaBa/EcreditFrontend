@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
 import { GarantieService } from '../../services/garantie.service';
-import { Garantie } from '../models/Garantie';
+import { Garantie, Garantiee } from '../models/Garantie';
 import { TypeG } from '../models/TypeG';
 import { NatureG } from '../models/NatureG';
 
@@ -13,11 +13,13 @@ import { NatureG } from '../models/NatureG';
 })
 export class GarantieComponent implements OnInit {
   garanties: Garantie[] = [];
+  garantiees: Garantiee[] = [];
   selectedNatureGId: any;
   selectedTypeG: any;
   selectedValeur: any;
   selectedDevise: any;
-
+  idng! : number;
+  idtg! : number;
   typesG: TypeG[]=[];
   visible: boolean = false;
   naturesG: NatureG[] = [];
@@ -48,20 +50,32 @@ export class GarantieComponent implements OnInit {
   
   enregistrerGarantie() {
     if (this.selectedNatureGId) {
-      const nouvelleGarantie: Garantie = {
-        devise: this.selectedDevise!,
-        natureG: this.selectedNatureGId.libNG,
-        typeG: this.selectedTypeG?.libTG,
-        valeur: this.selectedValeur!
+        const nouvelleGarantie: Garantie = {
+            devise: this.selectedDevise!,
+            natureG: this.selectedNatureGId.libNG,
+            typeG: this.selectedTypeG?.libTG,
+            valeur: this.selectedValeur!
+        };
+        const nouvelleGarantiee: Garantiee = {
+          devise: this.selectedDevise!,
+          natureG: this.selectedNatureGId.libNG,
+          demande: 0,
+          valeur: this.selectedValeur!
       };
-  
-      this.ngService.ajouterGarantie(nouvelleGarantie);
-      this.garanties = this.ngService.garantiesProposees;
-      console.log("Garanties après l'ajout :", this.garanties);
+
+      this.garantiees.push(nouvelleGarantiee);
+
+        this.ngService.ajouterGarantie(nouvelleGarantie);
+        this.garanties = this.ngService.garantiesProposees;
+        console.log("Garanties après l'ajout :", this.garanties);
+
+        this.messageService.add({severity:'success', summary:'Succès', detail:'La garantie a été ajoutée avec succès'});
+        this.reinitialiser();
     } else {
-      console.warn('Veuillez sélectionner une nature de garantie.');
+        console.warn('Veuillez sélectionner une nature de garantie.');
     }
-  }
+}
+
   
   reinitialiser() {
     this.selectedDevise=null;

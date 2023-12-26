@@ -1,0 +1,219 @@
+<div>
+    <p-fieldset legend="Informations client" [toggleable]="true">
+        <div>
+          <table style="width: 100%;">
+            <tr>
+              <td colspan="6">
+                <label>N° CIN :</label>
+              </td>
+              <td colspan="6">
+                <input type="text" placeholder="CIN" pInputText class="p-inputtext p-component p-element" [(ngModel)]="demande.prop.cin" disabled>      
+              </td>
+              <td>
+                <label>Nom :</label>
+              </td>
+              <td>
+                <input type="text" pInputText class="p-inputtext p-component p-element p-filled ng-untouched ng-pristine" [(ngModel)]="demande.prop.nom" disabled>
+              </td>
+              <td>
+                <label>Prénom :</label>
+              </td>
+              <td colspan="3">
+                <input type="text" pInputText class="p-inputtext p-component p-element p-filled ng-untouched ng-pristine" [(ngModel)]="demande.prop.prenom" disabled>
+              </td>
+            </tr>
+            <br>
+
+            <tr>
+              <td colspan="6">
+                <label>N° du compte :</label>
+              </td>
+              <td colspan="6">
+                <input type="text" pInputText class="p-inputtext p-component p-element" [(ngModel)]="demande.compte.numCompte" disabled>      
+              </td>
+              <td>
+                <label>Date d'ouverture compte :</label>
+              </td>
+              <td colspan="3">
+                <p-calendar [disabled]="true" dateFormat="dd/mm/yy" [showIcon]="true" [(ngModel)]="parseddateOuv"></p-calendar>
+              </td>
+            </tr>
+            <br>
+      
+            <tr>
+              <td colspan="6">
+                <label>Date de naissance :</label>
+              </td>
+              <td colspan="6">
+                <p-calendar  dateFormat="dd/mm/yy" [disabled]="true" [showIcon]="true" [(ngModel)]="parsedDateNaiss"></p-calendar>
+           
+              </td>
+              <td>
+                <label>Situation familiale :</label>
+              </td>
+              <td colspan="3">
+                <input type="text" pInputText class="p-inputtext p-component p-element p-filled ng-untouched ng-pristine" [(ngModel)]="demande.prop.sf" disabled>
+              </td>
+            </tr>
+            
+          </table>
+        </div>
+      </p-fieldset>
+      </div>
+<br>
+<div>
+    <p-fieldset legend="Dossier crédit" [toggleable]="true">
+        <div>
+            <table style="width: 100%;">
+                <tr>
+                    <td colspan="6">
+                        <label>Type crédit :</label>
+                    </td>
+                    <td colspan="6">
+                        <input type="text" pinputtext class="p-inputtext p-component p-element p-filled ng-untouched ng-pristine" [(ngModel)]="demande.nomC"  disabled>                
+                    </td>
+                    <td>
+                        <label>Montant :</label>
+                    </td>
+                    <td >
+                        <input type="text" pinputtext class="p-inputtext p-component p-element p-filled ng-untouched ng-pristine" [(ngModel)]="demande.credit.montant"  disabled>                
+                    </td>
+                </tr>
+                <br>
+                <tr>
+                    <td colspan="6">
+                        <label>Unité :</label>
+                    </td>
+                    <td colspan="6">
+                        <input type="text" pinputtext class="p-inputtext p-component p-element p-filled ng-untouched ng-pristine" [(ngModel)]="demande.credit.unite" disabled>                
+                    </td>
+                    <td>
+                        <label>Nbre échéance :</label>
+                    </td>
+                    <td >
+                        <input type="text" pinputtext class="p-inputtext p-component p-element p-filled ng-untouched ng-pristine" [(ngModel)]="demande.credit.nbE" disabled>                
+                    </td>
+                
+                </tr>
+            </table>
+        </div>
+    </p-fieldset>
+    </div>
+<br>
+<div>
+    <p-fieldset legend="Garanties proposées" [toggleable]="true">
+        <br>
+    
+        <p-table
+        #dt
+        [rows]="10"
+        [tableStyle]="{ 'min-width': '100%' }"
+        [rowHover]="true"
+        dataKey="id"
+      >
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="text-align: center;">Nature</th>
+                <th style="text-align: center;">Type</th>
+                <th style="text-align: center;">Valeur</th>
+                <th style="text-align: center;">Devise</th>
+            </tr>
+    
+    
+            <!-- Première ligne statique -->
+            <tr *ngFor="let g of demande.garanties">
+                <!-- Affichez les propriétés de la garantie -->
+                <td class="text-center">{{g.typeG}}</td>
+                <td class="text-center">{{g.typeG}}</td>
+                <td class="text-center">{{g.valeur}}</td>
+                <td class="text-center">{{g.devise}}</td>
+                <br>
+            </tr>
+            <br>
+        </ng-template>
+    </p-table>
+    
+    
+    
+    <br>
+    
+    </p-fieldset></div>
+<br>
+<div>
+    <p-fieldset legend="Suivi" [toggleable]="true">
+        <div>
+            <table style="width: 100%;">
+                <tr>
+                    <td colspan="2">
+                        <label>Entrée en relation le :</label>
+                    </td>
+                    <td colspan="3">
+                        <p-calendar [disabled]="true" dateFormat="dd/mm/yy" [showIcon]="true" [(ngModel)]="dateD"></p-calendar>
+                    </td>
+                    <td colspan="2">
+                        <label>Par :</label>
+                    </td>
+                    <td colspan="3">
+                        <input type="text" pinputtext class="p-inputtext p-component p-element p-filled ng-untouched ng-pristine" [(ngModel)]="saisisseur" disabled>                
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </p-fieldset>
+    </div>
+<br>
+<div>
+    <p-fieldset legend="Pièces jointes" [toggleable]="true">
+        <div>
+          <table style="width: 100%;">
+            <tr>
+              <td>
+                <p-table
+                  #dt
+                  [rows]="10"
+                  [paginator]="true"
+                  [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']"
+                  [tableStyle]="{ 'min-width': '100%' }"
+                  [rowHover]="true"
+                  dataKey="id"
+                  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                  [showCurrentPageReport]="true"
+                >
+                  <ng-template pTemplate="header">
+                    <tr>
+                      <th style="text-align: center;">Documents</th>
+                    </tr>
+    
+                  <tr *ngFor="let pj of demande.pjs">
+                    <td class="text-center">{{ pj.document }}</td>
+                  </tr>
+    
+                  </ng-template>
+                </p-table>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </p-fieldset>
+      </div>
+<br>
+<div>
+    <p-fieldset legend="Observation" [toggleable]="true">
+        <div>
+          <textarea pInputTextarea rows="5" placeholder="Ajouter une observation"  [(ngModel)]="demande.demande.observation" style="width: 1900%; max-width:1900px;" disabled></textarea>
+        </div>
+      </p-fieldset>
+      </div>
+<br>
+<div>
+    <p-fieldset legend="Historique" [toggleable]="true">
+        <div>
+        </div>
+      </p-fieldset>
+      </div>
+<br>
+<div style="text-align: center; margin-top: 20px;" *ngIf="demande.demande.etat === 0">
+    <button pButton type="button" icon="pi pi-plus" label="Valider" class="p-button-info custom-button" ></button>
+    <span style="margin: 0 10px;"></span> 
+    <button pButton type="onSubmit" icon="pi pi-refresh" label="Annuler" class="p-button-warning custom-button" ></button>
+</div>
