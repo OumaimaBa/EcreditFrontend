@@ -41,6 +41,7 @@ import { DemandeConsultComponent } from './demande-consult/demande-consult.compo
 import { HistoriqueComponent } from './historique/historique.component';
 import {ConfirmPopupModule} from 'primeng/confirmpopup';
 import {ConfirmationService} from 'primeng/api';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import {ConfirmationService} from 'primeng/api';
     HistoriqueComponent,
     ],
   imports: [
+    ConfirmDialogModule,
     ConfirmPopupModule,
     CheckboxModule,
     HttpClientModule ,
@@ -85,7 +87,7 @@ import {ConfirmationService} from 'primeng/api';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [MessageService, DatePipe, DialogService ,    ConfirmationService],
+  providers: [ConfirmationService,MessageService, DatePipe, DialogService ,    ConfirmationService],
   bootstrap: [AppComponent]
 
 })

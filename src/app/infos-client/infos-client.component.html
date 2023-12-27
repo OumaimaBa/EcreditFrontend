@@ -11,8 +11,10 @@
             <small *ngIf="cinControl.errors?.required">Le champ CIN est obligatoire.</small>
             <small *ngIf="cinControl.errors?.pattern">Le champ CIN doit contenir exactement 8 chiffres.</small>
           </div>
-        </td>
-
+          <div *ngIf="showClientNotFoundMessage" class="error-message">
+            <small>Client inexistant.</small>
+          </div>
+        </td>        
         
         <td>
           <label>Nom :</label>

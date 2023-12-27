@@ -1,6 +1,6 @@
 export interface Proprietaire {
     cin: string;
-    mdp: string;
+    mdp: string ;
     nom: string;
     prenom: string;
     dateNaiss: Date;
@@ -18,10 +18,10 @@ export interface Proprietaire {
 
     
   export interface Compte {
-    numCompte?: string;
-    dateOuv?: Date;
-    devise?: string;
-    proprietaire?: string;
+    numCompte: string;
+    dateOuv: Date;
+    devise: string;
+    proprietaire: string;
   }
   
   

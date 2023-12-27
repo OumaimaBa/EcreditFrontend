@@ -13,6 +13,7 @@ import { MessageService } from 'primeng/api';
 export class LoginComponent implements OnInit {
   login!: string;
   mdp!: string;
+  showErrorMessage: boolean = false;
 
   constructor(private messageService: MessageService,private router: Router,private appComponent: AppComponent,private authService: LoginService) {
   }
@@ -21,29 +22,34 @@ export class LoginComponent implements OnInit {
   }
 
   onConnexion() {
-
     const loginDto = { login: this.login, mdp: this.mdp };
-    console.log(loginDto);
-    this.authService.login(loginDto)
-      .subscribe({
-        next: data => {
-          if (data && data.accessToken) {
-            this.appComponent.isLoggedIn = true;
-            this.router.navigate(['/demande']);
-            this.messageService.add({severity:'success', summary:'Succès', detail:'La garantie a été ajoutée avec succès'});
-            this.authService.utilisateur=this.login;
-          } else {
-            console.error('La réponse ne contient pas un jeton valide. Réponse:', data);
-          }
-        },
-        error: error => {
-          console.error('Erreur de connexion:', error);
+
+    this.messageService.clear();
+
+    this.authService.login(loginDto).subscribe({
+      next: data => {
+        if (data && data.accessToken) {
+          this.appComponent.isLoggedIn = true;
+          this.router.navigate(['/demande']);
+          this.authService.utilisateur = this.login;
+        } else {
+          console.error('La réponse ne contient pas un jeton valide. Réponse:', data);
+          this.messageService.clear();
+          this.afficherMessageErreur('Nom d\'utilisateur ou mot de passe incorrect.');
         }
-      });
+      },
+      error: error => {
+        console.error('Erreur de connexion:', error);
+        this.messageService.clear();
+        this.afficherMessageErreur('Nom d\'utilisateur ou mot de passe incorrect.');
+      }
+    });
   }
-  
-  
-  
+
+  afficherMessageErreur(message: string): void {
+    this.messageService.add({ severity: 'error', summary: 'Erreur', detail: message });
+  }
+
 
 }
 

@@ -10,6 +10,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { PiecesJComponent } from '../pieces-j/pieces-j.component';
 import { PieceJs } from '../models/Demande';
 import { MessageService } from 'primeng/api';
+import { Dialog } from 'primeng/dialog';
 
 @Component({
   selector: 'app-demande',
@@ -17,7 +18,9 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./demande.component.css']
 })
 export class DemandeComponent implements OnInit {
-
+  display: boolean = false; 
+  successMessage: string = ''; 
+  errorMessage: string = ''; 
   demande!: DemandeRequest ;
 
   @ViewChild(InfosClientComponent) infosClientComponent: InfosClientComponent | undefined;
@@ -61,43 +64,85 @@ export class DemandeComponent implements OnInit {
         }
       });
   }
-  
+
   enregistrerDemande() {
+    if (!this.dossierCreditComponent || !this.infosClientComponent || !this.garantieComponent) {
+      this.errorMessage = 'Veuillez remplir tous les champs requis.';
+      this.successMessage = '';
+      this.display = true;
+      return;
+    }
+  
+    if (!this.dossierCreditComponent.montant || !this.dossierCreditComponent.unite || !this.dossierCreditComponent.nbE || !this.dossierCreditComponent.typeCid) {
+      this.errorMessage = 'Veuillez remplir tous les champs du dossier de crédit.';
+      this.successMessage = '';
+      this.display = true;
+      return;
+    }
+  
+    if (!this.infosClientComponent.selectedNumeroCompte) {
+      this.errorMessage = 'Veuillez remplir tous les infos du client.';
+      this.successMessage = '';
+      this.display = true;
+      return;
+    }
+  
+    if (!this.garantieComponent.garantiees || this.garantieComponent.garantiees.length === 0) {
+      this.errorMessage = 'Veuillez ajouter au moins une garantie.';
+      this.successMessage = '';
+      this.display = true;
+      return;
+    }
+  
     this.demande = new DemandeRequest();
     this.demande.etat = 0;
     this.demande.DateDemande = new Date();
-    this.demande.credit.montant = this.dossierCreditComponent!.montant;
-    this.demande.credit.unite = this.dossierCreditComponent!.unite;
-    this.demande.credit.nbE = this.dossierCreditComponent!.nbE;
-    this.demande.credit.typeC = this.dossierCreditComponent!.typeCid;
+    this.demande.credit.montant = this.dossierCreditComponent.montant;
+    this.demande.credit.unite = this.dossierCreditComponent.unite;
+    this.demande.credit.nbE = this.dossierCreditComponent.nbE;
+    this.demande.credit.typeC = this.dossierCreditComponent.typeCid;
     this.demande.utilisateur = 'Agent1@gmail.com';
-    this.demande.compte = this.infosClientComponent!.selectedNumeroCompte.toString();
-    this.demande.garanties = this.garantieComponent!.garantiees;
+    this.demande.compte = this.infosClientComponent.selectedNumeroCompte.toString();
+    this.demande.garanties = this.garantieComponent.garantiees;
   
-    // Appel à l'API avec HttpClient
     this.http.post<any>('http://localhost:8089/demande/add', this.demande).subscribe({
       next: (data) => {
-        console.log('Réponse de l\'API:', data);
         this.uploadFiles();
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Succès',
-          detail: 'La demande a été ajoutée avec succès'
-        });
+        this.successMessage = 'La demande a été ajoutée avec succès';
+        this.errorMessage = '';
+        this.display = true;
       },
       error: (error) => {
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Erreur',
-          detail: 'Une erreur s\'est produite lors de l\'ajout de la demande'
-        });
-        console.error('Erreur lors de la récupération des informations depuis l\'API', error);
+        this.errorMessage = "Une erreur s'est produite lors de l'ajout de la demande";
+        this.successMessage = '';
+        this.display = true;
       }
     });
   }
-
-  reinitialiser(){
-    
+  reinitialiser() {
+    if (this.dossierCreditComponent) {
+      //this.dossierCreditComponent.montant = null;
+      //this.dossierCreditComponent.unite = null;
+      //this.dossierCreditComponent.nbE = null;
+      //this.dossierCreditComponent.typeCid = null;
+    }
+  
+    if (this.infosClientComponent) {
+      //this.infosClientComponent.selectedNumeroCompte = null;
+      // Ajoutez d'autres propriétés que vous souhaitez réinitialiser dans InfosClientComponent
+    }
+  
+    if (this.garantieComponent) {
+      this.garantieComponent.garantiees = [];
+      // Ajoutez d'autres propriétés que vous souhaitez réinitialiser dans GarantieComponent
+    }
+  
+    // Ajoutez une logique de réinitialisation similaire pour les autres composants si nécessaire
+  
+    // Effacez les messages de succès et d'erreur
+    this.successMessage = '';
+    this.errorMessage = '';
   }
-
+  
+  
 }

@@ -123,8 +123,8 @@
             <!-- Première ligne statique -->
             <tr *ngFor="let g of demande.garanties">
                 <!-- Affichez les propriétés de la garantie -->
-                <td class="text-center">{{g.typeG}}</td>
-                <td class="text-center">{{g.typeG}}</td>
+                <td class="text-center">{{g.valeur}}</td>
+                <td class="text-center">{{g.valeur}}</td>
                 <td class="text-center">{{g.valeur}}</td>
                 <td class="text-center">{{g.devise}}</td>
                 <br>
@@ -213,7 +213,13 @@
       </div>
 <br>
 <div style="text-align: center; margin-top: 20px;" *ngIf="demande.demande.etat === 0">
-    <button pButton type="button" icon="pi pi-plus" label="Valider" class="p-button-info custom-button" ></button>
-    <span style="margin: 0 10px;"></span> 
-    <button pButton type="onSubmit" icon="pi pi-refresh" label="Annuler" class="p-button-warning custom-button" ></button>
+  <button pButton type="button" icon="pi pi-check" label="Valider la demande" (click)="validerDemande(demande)" class="p-button-success custom-button"></button>
+  <span style="margin: 0 10px;"></span> 
+  <button pButton type="button" icon="pi pi-times" label="Annuler la demande" class="p-button-warning custom-button"></button>
+  <span style="margin: 0 10px;"></span> 
+  <button pButton type="button" icon="pi pi-arrow-left" label="Retourner à la page précédente" class="p-button-primary custom-button" (click)="retour()"></button>
+</div>
+
+<div style="text-align: center; margin-top: 20px;" *ngIf="demande.demande.etat != 0">
+  <button pButton type="button" icon="pi pi-refresh" label="Retourner" class="p-button-warning custom-button" (click)="retour()"></button>
 </div>

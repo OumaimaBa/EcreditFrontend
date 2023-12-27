@@ -18,7 +18,8 @@ export class PiecesJComponent implements OnInit {
 
   onFileSelected(event: any): void {
     // Note: event.target.files is a FileList
-    this.selectedFiles = event.target.files;
+    // Append new files to the existing ones
+    this.selectedFiles = [...this.selectedFiles, ...(Array.from(event.target.files) as File[])];
   }
 
   uploadFiles(): void {
@@ -33,6 +34,10 @@ export class PiecesJComponent implements OnInit {
     }
   }
 
+  getSelectedFileNames(): string {
+    return this.selectedFiles.map(file => file.name).join(', ');
+  }
+
   onFileUpload(file: File, idDemande: number): void {
     const formData: FormData = new FormData();
     formData.append('file', file);
@@ -44,6 +49,8 @@ export class PiecesJComponent implements OnInit {
       .subscribe({
         next: data => {
           console.log('Réponse de l\'API :', data);
+          // Update the displayed files after successful upload
+          this.loadPiecesJsDemandes(1);
         },
         error: error => {
           console.error('Erreur lors de l\'envoi du fichier :', error);

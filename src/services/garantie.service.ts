@@ -33,7 +33,7 @@ export class GarantieService {
   }
 
   getGarantiesProposees() {
-    // return this.garantiesProposees;
+     return this.garantiesProposees;
   }
 
 }

@@ -25,7 +25,22 @@
 <div style="text-align: center; margin-top: 20px;">
     <button pButton type="button" icon="pi pi-plus" label="Enregistrer" class="p-button-info custom-button" (click)="enregistrerDemande()"></button>
     <span style="margin: 0 10px;"></span> <!-- Ajoutez un espace horizontal entre les boutons -->
-    <button pButton type="onSubmit" icon="pi pi-refresh" label="Réinitialiser" class="p-button-warning custom-button" (click)="reinitialiser()"></button>
+    <button pButton type="button" icon="pi pi-refresh" label="Réinitialiser" class="p-button-warning custom-button" (click)="reinitialiser()"></button>
 </div>
 <br>
+<p-dialog [(visible)]="display" [style]="{ 'width': '450', 'max-height': '60vh' }">
+    <div style="text-align: center; padding: 20px;">
+      <ng-container *ngIf="successMessage; else errorMessageTemplate">
+        <i class="pi pi-check-circle" style="font-size: 3em; color: green;"></i>
+        <p style="color: green; font-size: 1.5em; margin-top: 10px;">{{ successMessage }}</p>
+        <button pButton type="button" label="OK" (click)="display = false" class="p-button-success" style="margin-top: 20px;"></button>
+      </ng-container>
+      <ng-template #errorMessageTemplate>
+        <i class="pi pi-exclamation-triangle" style="font-size: 3em; color: red;"></i>
+        <p style="color: red; font-size: 1.5em; margin-top: 10px;">{{ errorMessage }}</p>
+        <button pButton type="button" label="OK" (click)="display = false" class="p-button-error" style="margin-top: 20px;"></button>
+      </ng-template>
+    </div>
+  </p-dialog>
+  
 

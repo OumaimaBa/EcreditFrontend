@@ -1,49 +1,39 @@
 <p-fieldset legend="Pièces jointes" [toggleable]="true">
-    <div>
-      <table style="width: 100%;">
-        <tr>
-          <td>
-            <p-table
-              #dt
-              [rows]="10"
-              [paginator]="true"
-              [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']"
-              [tableStyle]="{ 'min-width': '100%' }"
-              [rowHover]="true"
-              dataKey="id"
-              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-              [showCurrentPageReport]="true"
-            >
-              <ng-template pTemplate="header">
-                <tr>
-                  <th style="text-align: center;">Documents</th>
-                  <th style="text-align: center;">Obligatoire</th>
-                  <th style="text-align: center;">Status</th>
-                </tr>
-              
-              
-                <!-- Première ligne statique -->
-                <!-- pieces-j.component.html -->
+  <div class="pieces-container">
+    <div class="table-container">
+      <p-table
+        #dt
+        [rows]="10"
+        [paginator]="true"
+        [globalFilterFields]="['name', 'country.name', 'representative.name', 'status']"
+        [tableStyle]="{ 'min-width': '100%' }"
+        [rowHover]="true"
+        dataKey="id"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [showCurrentPageReport]="true"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="text-align: center;">Documents</th>
+            <th style="text-align: center;">Obligatoire</th>
+            <th style="text-align: center;">Status</th>
+          </tr>
+        </ng-template>
 
-              <tr *ngFor="let pj of piecesJsDemandes">
-                <td class="text-center">{{ pj.document }}</td>
-                <td class="text-center">{{ pj.obg === 1 ? 'Oui' : 'Non' }}</td>
-                <td class="text-center">
-                  <p-checkbox [ngModel]="convertToBoolean(pj.statut)" (ngModelChange)="pj.statut = $event" [binary]="true"></p-checkbox>
-                </td>
-              </tr>
-
-              </ng-template>
-            </p-table>
+        <tr *ngFor="let pj of piecesJsDemandes">
+          <td class="text-center">{{ pj.document }}</td>
+          <td class="text-center">{{ pj.obg === 1 ? 'Oui' : 'Non' }}</td>
+          <td class="text-center">
+            <p-checkbox [ngModel]="convertToBoolean(pj.statut)" (ngModelChange)="pj.statut = $event" [binary]="true"></p-checkbox>
           </td>
-          <td style="margin-left: 50px;">
-            <input type="file" (change)="onFileSelected($event)" multiple />
-            <button pButton pRipple icon="pi pi-plus" class="p-button-rounded p-button-info" (click)="uploadFiles()"></button>
-        </td>
-        
-          
         </tr>
-      </table>
+      </p-table>
     </div>
-  </p-fieldset>
-  
+
+    <div class="button-container">
+      <div class="selected-files">
+        {{ getSelectedFileNames() }}
+      </div>
+    </div>
+  </div>
+</p-fieldset>
