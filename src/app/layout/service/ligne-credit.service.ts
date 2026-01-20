@@ -1,0 +1,25 @@
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { LigneCredit } from '../../model/ligne-credit';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class LigneCreditService {
+  apiUrl: string = 'http://localhost:8080/lignes';
+  constructor(private http: HttpClient) { }
+  getGroupedByNature(famille: string): Observable<{ [nature: string]: LigneCredit[] }> {
+    return this.http.get<{ [nature: string]: LigneCredit[] }>(
+      `${this.apiUrl}/grouped/famille/${famille}`
+    );
+  }
+
+  getSumByDevise(devise: string): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/sum-by-devise`, {
+      params: { devise }
+    });
+  }
+
+
+}
