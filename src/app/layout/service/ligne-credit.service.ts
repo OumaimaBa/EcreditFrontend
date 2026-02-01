@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LigneCredit } from '../../model/ligne-credit';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LigneCreditService {
-  apiUrl: string = 'http://localhost:8080/lignes';
+  apiUrl: string = `${environment.apiUrl}/lignes`;
   constructor(private http: HttpClient) { }
   getGroupedByNature(famille: string): Observable<{ [nature: string]: LigneCredit[] }> {
     return this.http.get<{ [nature: string]: LigneCredit[] }>(
