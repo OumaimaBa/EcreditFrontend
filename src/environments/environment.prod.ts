@@ -6,5 +6,5 @@
 export const environment = {
   production: true,
   /** URL de base de l'API backend en production (à adapter selon votre déploiement) */
-  apiUrl: 'https://votre-api-backend.com',
+  apiUrl: 'http://192.168.56.10:8085',
 };
