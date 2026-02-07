@@ -18,37 +18,24 @@ export class LoginComponent implements OnInit {
   constructor(private messageService: MessageService,private router: Router,private appComponent: AppComponent,private authService: LoginService) {
   }
 
-  ngOnInit(): void {
-  }
+ngOnInit(): void {
+}
 
-  onConnexion() {
-    const loginDto = { login: this.login, mdp: this.mdp };
+onConnexion() {
+  const loginValide = 'OumaimaBa';
+  const mdpValide = 'Oumaima.9999';
 
-    this.messageService.clear();
+  this.messageService.clear();
 
-    this.authService.login(loginDto).subscribe({
-      next: data => {
-        if (data && data.accessToken) {
-          this.appComponent.isLoggedIn = true;
-          this.router.navigate(['/demande']);
-          this.authService.utilisateur = this.login;
-        } else {
-          console.error('La réponse ne contient pas un jeton valide. Réponse:', data);
-          this.messageService.clear();
-          this.afficherMessageErreur('Nom d\'utilisateur ou mot de passe incorrect.');
-        }
-      },
-      error: error => {
-        console.error('Erreur de connexion:', error);
-        this.messageService.clear();
-        this.afficherMessageErreur('Nom d\'utilisateur ou mot de passe incorrect.');
-      }
-    });
-  }
+    // Login statique réussi
+    this.appComponent.isLoggedIn = true;
+    this.authService.utilisateur = this.login; // stocke le login
+    this.router.navigate(['/demande']);
+}
 
-  afficherMessageErreur(message: string): void {
-    this.messageService.add({ severity: 'error', summary: 'Erreur', detail: message });
-  }
+afficherMessageErreur(message: string): void {
+  this.messageService.add({ severity: 'error', summary: 'Erreur', detail: message });
+}
 
 
 }
