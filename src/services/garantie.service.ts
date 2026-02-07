@@ -10,7 +10,7 @@ import { Garantie } from 'src/app/models/Garantie';
 })
 
 export class GarantieService {
-  private apiUrl = 'http://localhost:8089/';
+  private apiUrl = 'http://192.168.56.10:8085/';
   garantiesProposees:Garantie[]=[];
 
 

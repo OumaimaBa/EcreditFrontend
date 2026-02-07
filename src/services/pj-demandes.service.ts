@@ -7,7 +7,7 @@ import { PjDemandes } from 'src/app/models/PjDemandes';
   providedIn: 'root'
 })
 export class PjDemandesService {
-  private apiUrl = 'http://localhost:8089/pjDemandes';
+  private apiUrl = 'http://192.168.56.10:8085/pjDemandes';
 
   constructor(private http: HttpClient) {}
 

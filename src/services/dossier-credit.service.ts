@@ -8,7 +8,7 @@ import { TypeC } from '../app/models/TypeC';
 })
 
 export class TypeCService {
-  private apiUrl = 'http://localhost:8089/typeC';
+  private apiUrl = 'http://192.168.56.10:8085/typeC';
 
   constructor(private http: HttpClient) { }
 

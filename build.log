@@ -1,0 +1,70 @@
+nohup: ignoring input
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.11kB 0.0s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/node:16
+#2 ...
+
+#3 [internal] load metadata for docker.io/library/nginx:alpine
+#3 DONE 0.6s
+
+#2 [internal] load metadata for docker.io/library/node:16
+#2 DONE 0.6s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.1s
+
+#5 [builder 1/6] FROM docker.io/library/node:16@sha256:f77a1aef2da8d83e45ec990f45df50f1a286c5fe8bbfb8c6e4246c6389705c0b
+#5 DONE 0.0s
+
+#6 [stage-1 1/3] FROM docker.io/library/nginx:alpine@sha256:5878d06ae4c83d73285438255f705bb3f9a736f41cd24876ed25bb33faf76c7d
+#6 DONE 0.0s
+
+#7 [stage-1 2/3] RUN rm -rf /usr/share/nginx/html/*
+#7 CACHED
+
+#8 [internal] load build context
+#8 transferring context: 2.29MB 4.8s
+#8 transferring context: 4.71MB 10.1s done
+#8 DONE 10.4s
+
+#9 [builder 2/6] WORKDIR /app
+#9 CACHED
+
+#10 [builder 3/6] COPY package*.json ./
+#10 CACHED
+
+#11 [builder 4/6] RUN npm install --legacy-peer-deps
+#11 CACHED
+
+#12 [builder 5/6] COPY . .
+#12 DONE 28.2s
+
+#13 [builder 6/6] RUN npm run build -- --output-path=dist --configuration=production --budgets=false
+#13 2.344 
+#13 2.344 > ecredit@0.0.0 build
+#13 2.344 > ng build --output-path=dist --configuration=production --budgets=false
+#13 2.344 
+#13 5.456 Unknown option: '--budgets'
+#13 ERROR: process "/bin/sh -c npm run build -- --output-path=dist --configuration=production --budgets=false" did not complete successfully: exit code: 1
+------
+ > [builder 6/6] RUN npm run build -- --output-path=dist --configuration=production --budgets=false:
+2.344 
+2.344 > ecredit@0.0.0 build
+2.344 > ng build --output-path=dist --configuration=production --budgets=false
+2.344 
+
+------
+Dockerfile:19
+--------------------
+  17 |     
+  18 |     # Builder l'application Angular pour production
+  19 | >>> RUN npm run build -- --output-path=dist --configuration=production --budgets=false
+  20 |     
+  21 |     # -----------------------------
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c npm run build -- --output-path=dist --configuration=production --budgets=false" did not complete successfully: exit code: 1

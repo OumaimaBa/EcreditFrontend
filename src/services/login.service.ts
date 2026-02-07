@@ -8,7 +8,7 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = 'http://localhost:8089/api/auth'; 
+  private apiUrl = 'http://192.168.56.10:8085/api/auth'; 
   private readonly tokenKey = 'token';
   private authToken: string | null = null; 
   public  utilisateur:string='';

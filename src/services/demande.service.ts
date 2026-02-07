@@ -7,7 +7,7 @@ import { Demande, DemandeResponse } from 'src/app/models/Demande';
   providedIn: 'root'
 })
 export class DemandeService {
-  private apiUrl = 'http://localhost:8089/demande'; // Remplacez par l'URL de votre API
+  private apiUrl = 'http://192.168.56.10:8085/demande'; // Remplacez par l'URL de votre API
 
   constructor(private http: HttpClient) {}
 

@@ -8,7 +8,7 @@ import { Proprietaire } from 'src/app/models/Proprietaire-Compte';
 })
 export class ProprietaireComptesService {
 
-  private apiUrl = 'http://localhost:8089/';
+  private apiUrl = 'http://192.168.56.10:8085/';
   constructor(private http: HttpClient) { }
   
   getInfosClient(cin: string): Observable<Proprietaire> {
